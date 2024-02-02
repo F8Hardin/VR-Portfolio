@@ -11,6 +11,7 @@ public class ARDisplayController : MonoBehaviour
     [SerializeField] private ARDisplayView _ARDisplayView;
     //Animator
     [SerializeField] private Animator _ARDisplayAnimator;
+    [SerializeField] private Animator _ARDisplayGrabUIAnimator;
 
     //UI opening/closing events that trigger when the UIs opening and closing animations are finished
     public UnityEvent OnDisplayViewOpen = new UnityEvent();
@@ -60,6 +61,7 @@ public class ARDisplayController : MonoBehaviour
         if (_ARDisplayAnimator != null)
         {
             _ARDisplayAnimator.SetBool("UIIsOpen", true);
+            _ARDisplayGrabUIAnimator.SetBool("UIIsOpen", true);
         }
         OnDisplayViewOpen.Invoke();
     }
@@ -70,6 +72,7 @@ public class ARDisplayController : MonoBehaviour
         if (_ARDisplayAnimator != null)
         {
             _ARDisplayAnimator.SetBool("UIIsOpen", false);
+            _ARDisplayGrabUIAnimator.SetBool("UIIsOpen", false);
         }
         OnDisplayViewClose.Invoke();
     }
